@@ -7,6 +7,9 @@ public class TicTacToeGame {
 	static char[] board = new char[10];
 	static char computer = 'O';
 	static int initialize = 1;
+	static char userInput;
+
+	static Scanner input = new Scanner(System.in);
 
 	// UC1 - creating method to initialize indices with blank space
 	static char[] createBoard() {
@@ -18,9 +21,8 @@ public class TicTacToeGame {
 
 	// UC2 - Creating method to take the input from user
 	public static void userInput() {
-		Scanner input = new Scanner(System.in);
 		System.out.println("Enter the input X/O");
-		char userInput = input.next().toUpperCase().charAt(0);
+		userInput = input.next().toUpperCase().charAt(0);
 
 		if (userInput == 'X') {
 			computer = 'O';
@@ -29,14 +31,26 @@ public class TicTacToeGame {
 		} else {
 			System.out.println("Invalid input");
 		}
-		input.close();
 	}
 
 	// UC3 - Creating method to print the array elements
 	public static void displayBoard() {
-		for (int index = initialize; index <=board.length - initialize; index++) {
+		for (int index = initialize; index <= board.length - initialize; index++) {
 			System.out.println(board[index] + "|" + board[index + 1] + "|" + board[index + 2]);
 			initialize = initialize + 3;
+		}
+	}
+
+	// UC4 - Creating method to ask the input and check the index is vacant
+	public static void checkingindex() {
+		System.out.println("Enter the index from 1 to 9");
+		int userIndex = input.nextInt();
+		if (board[userIndex] == ' ') {
+			System.out.println("Enter the value O/X");
+			userInput = input.next().toUpperCase().charAt(0);
+			board[userIndex] = userInput;
+		} else {
+			System.out.println("The index you are entered is not vacant check for other index");
 		}
 	}
 
@@ -45,5 +59,6 @@ public class TicTacToeGame {
 		createBoard();
 		userInput();
 		displayBoard();
+		checkingindex();
 	}
 }
