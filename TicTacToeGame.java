@@ -14,13 +14,9 @@ public class TicTacToeGame {
 
 	// UC2 - Creating method to take the input from user
 	public static void userInput() {
-
 		char computer = 'O';
-
 		Scanner input = new Scanner(System.in);
-
 		System.out.println("Enter the input X/O");
-
 		char userInput = input.next().toUpperCase().charAt(0);
 
 		if (userInput == 'X') {
@@ -33,9 +29,19 @@ public class TicTacToeGame {
 		input.close();
 	}
 
+	// UC3 - Creating method to print the array elements
+	public static void checkBoard() {
+		char[][] checkBoard = { { '-', ' ', '|', ' ', '-', ' ', '|', ' ', '-' },
+				{ '-', ' ', '|', ' ', '-', ' ', '|', ' ', '-' }, { '-', ' ', '|', ' ', '-', ' ', '|', ' ', '-' } };
+		for (int i = 0; i < checkBoard.length; i++) {
+			System.out.println(checkBoard[i]);
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to TicTacToe Game");
 		createBoard();
 		userInput();
+		checkBoard();
 	}
 }
